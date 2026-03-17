@@ -14,9 +14,22 @@ spec:
     spec:
       containers:
       - name: php-crud
-        image: gangassault343/myphpmysqlapp:latest
+        image: gangassault343/myphpmysqlapp:v2
         ports:
         - containerPort: 80
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath:  metadata.name  
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
 ---
 apiVersion: v1
 kind: Service
