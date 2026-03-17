@@ -25,10 +25,11 @@ spec:
         volumeMounts:
         - name: mysql-initdb
           mountPath: /docker-entrypoint-initdb.d
-        volumes:
-        - name: mysql-initdb
-          configMap:
-            name: mysql-initdb
+
+      volumes:   # ✅ moved here (correct place)
+      - name: mysql-initdb
+        configMap:
+          name: mysql-initdb
 ---
 apiVersion: v1
 kind: Service
@@ -39,3 +40,5 @@ spec:
     app: mysql
   ports:
   - port: 3306
+    targetPort: 3306   # ✅ added (best practice)
+  type: ClusterIP      # ✅ optional but recommended
