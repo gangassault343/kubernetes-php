@@ -112,6 +112,7 @@ tr:hover {
 <div class="container">
     <!---ECHO Content--->
 <div class="pod-info">
+    <div align="centre"><h1>Arun's Kubernetes Cluster (Minikube)</h1></div>
     <strong>Pod:</strong> <?php echo $podName; ?> |
     <strong>IP:</strong> <?php echo $podIP; ?> |
     <strong>Node:</strong> <?php echo $nodeName; ?>
