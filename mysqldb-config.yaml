@@ -15,4 +15,4 @@ data:
     );
 
     INSERT INTO users (name, email, mobile)
-    VALUES ('John Doe', 'john@example.com', '9876543210');
+    VALUES ('Arun M L', 'aarjaappu@outlook.com', '7087046932');
