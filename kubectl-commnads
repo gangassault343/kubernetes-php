@@ -1,0 +1,30 @@
+//First command to execute with caution
+minikube start --driver docker --cpus=2 --memory=3072
+
+//Get all running in wide output
+kubectl get all -o wide 
+
+kubectl get node
+kubectl get po
+kubectl get deployment
+
+//start minikube service after deployment
+minikube service <my-service>
+
+//Start in Foreground
+kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0
+
+//Start in background
+nohup kubectl port-forward svc/php-service 8080:80 --address=0.0.0.0 > port-forward.log 2>&1 &
+
+//Check if it's running
+ps aux | grep port-forward
+
+//Stop it
+kill <PID>
+
+//create new user group docker
+newgrp docker
+
+//add current user to docker group
+sudo usermod -aG docker $USER
