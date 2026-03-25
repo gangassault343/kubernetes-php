@@ -22,23 +22,23 @@ spec:
           value: cruddb
         ports:
         - containerPort: 3306
+
         volumeMounts:
+        # ✅ ADD THIS (critical)
+        - name: mysql-storage
+          mountPath: /var/lib/mysql
+
+        # existing
         - name: mysql-initdb
           mountPath: /docker-entrypoint-initdb.d
 
-      volumes:   # ✅ moved here (correct place)
+      volumes:
+      # ✅ ADD THIS (critical)
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+
+      # existing
       - name: mysql-initdb
         configMap:
           name: mysql-initdb
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-service
-spec:
-  selector:
-    app: mysql
-  ports:
-  - port: 3306
-    targetPort: 3306   # ✅ added (best practice)
-  type: ClusterIP      # ✅ optional but recommended
