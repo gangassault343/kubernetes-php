@@ -9,4 +9,4 @@ spec:
     - ReadWriteOnce
   storageClassName: standard
   hostPath:
-    path: /data/mysql   # inside Kind node
+    path: /data/mysql   # Path in Virtual machine and it will get mounted in POD, POD will have this directory mounted inside it
