@@ -9,4 +9,4 @@ spec:
     - ReadWriteOnce
   storageClassName: standard
   hostPath:
-    path: /data/mysql   # Path in Virtual machine and it will get mounted in POD, POD will have this directory mounted inside it
+    path: /data/mysql  # Key insight, hostPath = node-local storage. So:Data exists only on the node where Pod runs,Not visible on other nodes
